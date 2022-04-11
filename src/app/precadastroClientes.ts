@@ -38,4 +38,5 @@ let cliente30 = new Cliente("30", "Waldo", "", new CPF("411123", "12/04/1992"), 
 let preCadastrados = [cliente1, cliente2, cliente3, cliente4,cliente5,cliente6,cliente7,cliente8,cliente9,cliente10,cliente11,cliente12,cliente13,cliente14,cliente15,cliente16,cliente17,cliente18,cliente19,cliente20,cliente21,cliente22,cliente23,cliente24,cliente25,cliente26,cliente27,cliente28,cliente29,cliente30]
 
 
+
 export default preCadastrados
