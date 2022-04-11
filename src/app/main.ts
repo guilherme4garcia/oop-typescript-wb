@@ -16,6 +16,8 @@ while (execucao) {
     console.log(`1 - Cadastrar cliente`);
     console.log(`2 - Listar todos os clientes`);
     console.log(`3 - Registrar um Produto`);
+    console.log('5 - Estatísticas');
+    
     // console.log(`2 - Remover cliente`);
     // console.log(`3 - Atualizar cliente`);
     // console.log(`6 - Remover um Produto`);
@@ -40,6 +42,22 @@ while (execucao) {
             let registro = new RegistroProduto(empresa.getClientes)
             registro.registrar()
             break
+        case 5:
+            console.log('1-Listagem dos 10 clientes que mais consumiram produtos ou serviços, em quantidade:')
+            console.log('2-Listagem de clientes por gênero:')
+
+            let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
+            switch (opcao) {
+                
+                case 1:
+                    let listagem2 = new ListagemClientes(empresa.getClientes)
+                    listagem2.clientes_consumiram_mais_produtos()
+                    break
+                case 2:
+                    let listagem = new ListagemClientes(empresa.getClientes)
+                    listagem.clientes_genero()
+                    break
+            }   
         case 0:
             execucao = false
             console.log(`Até mais`)

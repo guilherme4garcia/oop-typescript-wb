@@ -1,5 +1,6 @@
 import Cliente from "../modelo/cliente";
 import CPF from "../modelo/cpf";
+import Produto from "../modelo/produto";
 import Telefone from "../modelo/telefone";
 import Cadastro from "../negocio/cadastro";
 import CadastroCliente from "../negocio/cadastroCliente";
@@ -37,6 +38,27 @@ let cliente30 = new Cliente("30", "Waldo", "", new CPF("411123", "12/04/1992"), 
 
 let preCadastrados = [cliente1, cliente2, cliente3, cliente4,cliente5,cliente6,cliente7,cliente8,cliente9,cliente10,cliente11,cliente12,cliente13,cliente14,cliente15,cliente16,cliente17,cliente18,cliente19,cliente20,cliente21,cliente22,cliente23,cliente24,cliente25,cliente26,cliente27,cliente28,cliente29,cliente30]
 
+let prod1 = new Produto("Shampoo", 20)
+let prod2 = new Produto("Condicionador", 30)
+let prod3 = new Produto("Prestobarba", 6)
+let prod4 = new Produto("Maquiagem", 50)
+let prod5 = new Produto("Algodao", 2)
+let prod6 = new Produto("Sabonete", 5)
+let prod7 = new Produto("Hidratante", 9)
+let prod8 = new Produto("Perfume", 70)
+let prod9 = new Produto("Desodorante", 32)
+let prod10 = new Produto("Escova", 14)
+let prod11 = new Produto("Banana", 5)
+let prod12 = new Produto("Maça", 1)
+let prod13 = new Produto("Repolho", 7)
+let prod14 = new Produto("Po", 9)
+let prod15 = new Produto("Alface", 11)
+let prod16 = new Produto("Beterraba", 15)
+let prod17 = new Produto("Creolina", 5)
+let prod18 = new Produto("Alcool", 9)
+let prod19 = new Produto("Veja", 10)
+let prod20 = new Produto("Ajax", 6)
 
+export let produtosCadastro = [prod1,prod2,prod3,prod4,prod5,prod6,prod7,prod8,prod9,prod10,prod11,prod12,prod13,prod14,prod15,prod16,prod17,prod18,prod19,prod20]
 
-export default preCadastrados
+export default preCadastrados 
