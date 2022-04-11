@@ -8,17 +8,19 @@ export default class Cliente {
     public id: string
     public nome: string
     public nomeSocial: string
+    public genero: string
     private cpf: CPF
     private rgs: Array<RG>
     private dataCadastro: Date
     private telefones: Array<Telefone>
     public produtosConsumidos: Array<Produto>
     private servicosConsumidos: Array<Servico>
-    constructor(id: string, nome: string, nomeSocial: string, cpf: CPF, telefone: Telefone) {
+    constructor(id: string, nome: string, nomeSocial: string, cpf: CPF, genero: string, telefone: Telefone) {
         this.id = id
         this.nome = nome
         this.nomeSocial = nomeSocial
         this.cpf = cpf
+        this.genero = genero
         this.rgs = []
         this.dataCadastro = new Date()
         this.telefones = [telefone]

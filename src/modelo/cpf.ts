@@ -1,14 +1,14 @@
 export default class CPF {
     private valor: string
-    private dataEmissao: Date
-    constructor(valor: string, dataEmissao: Date) {
+    private dataEmissao: string
+    constructor(valor: string, dataEmissao: string) {
         this.valor = valor
         this.dataEmissao = dataEmissao
     }
     public get getValor(): string {
         return this.valor
     }
-    public get getDataEmissao(): Date {
+    public get getDataEmissao(): string {
         return this.dataEmissao
     }
 }
