@@ -1,60 +1,23 @@
-import CPF from "./cpf"
-import Produto from "./produto"
-import RG from "./rg"
-import Servico from "./servico"
-import Telefone from "./telefone"
+/* enum Gender{
+  M = 'M',
+  F = 'F'} */
 
 export default class Cliente {
-    public id: string
-    public nome: string
-    public nomeSocial: string
-    public genero: string
-    private cpf: CPF
-    private rgs: Array<RG>
-    private dataCadastro: Date
-    private telefones: Array<Telefone>
-    public produtosConsumidos: Array<Produto>
-    private servicosConsumidos: Array<Servico>
-    constructor(id: string, nome: string, nomeSocial: string, cpf: CPF, genero: string, telefone: Telefone) {
-        this.id = id
-        this.nome = nome
-        this.nomeSocial = nomeSocial
-        this.cpf = cpf
-        this.genero = genero
-        this.rgs = []
-        this.dataCadastro = new Date()
-        this.telefones = [telefone]
-        this.produtosConsumidos = []
-        this.servicosConsumidos = []
-    }
-    public get getCpf(): CPF {
-        return this.cpf
-    }
-    public get getRgs(): Array<RG> {
-        return this.rgs
-    }
-    public get getDataCadastro(): Date {
-        return this.dataCadastro
-    }
-    public get getTelefones(): Array<Telefone> {
-        return this.telefones
-    }
-    public get getProdutosConsumidos(): Array<Produto> {
-        return this.produtosConsumidos
-    }
-    public get getServicosConsumidos(): Array<Servico> {
-        return this.servicosConsumidos
-    }
+  public id: string
+  public name: string
+  public gender: string   //interface?
+  private cpf: string
+  private telefone: string
+  private data_cadastro: Date
+  //public produtos_consumidos: Array<Produto>
 
-    public set setServicosConsumidos(servicosConsumidos: Array<Servico>)
-    {
-        this.servicosConsumidos = servicosConsumidos
-
-    }
-
-    public set setProdutosConsumidos(produtosConsumidos: Produto)
-    {
-        this.produtosConsumidos.push(produtosConsumidos)
-
-    }
+  constructor(id: string, name: string, gender: string, cpf: string, telefone: string) {
+    this.id = id
+    this.name = name
+    this.gender = gender
+    this.cpf = cpf
+    this.telefone = telefone
+    this.data_cadastro = new Date()
+  }
+      
 }
