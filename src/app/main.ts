@@ -15,3 +15,22 @@ c1.produtos_consumidos.push(p1)
 
 
 console.log(c1.name);
+
+
+/* Objetivos:
+
+0- Criar Switch Case
+1- CRUD cliente
+2- CRUD produto/servico
+
+1. Listagem dos 10 clientes que mais consumiram produtos ou serviços, em quantidade, não em valor. 
+2. Listagem de todos os clientes por gênero. 
+3. Listagem geral dos serviços ou produtos mais consumidos. 
+4. Listagem dos serviços ou produtos mais consumidos por gênero. 
+5. Listagem dos 10 clientes que menos consumiram produtos ou serviços. 
+6. Listagem dos 5 clientes que mais consumiram em valor, não em quantidade
+
+
+Cadastrar 30 clientes e 20 produtos
+
+*/
