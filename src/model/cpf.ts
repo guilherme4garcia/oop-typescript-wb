@@ -4,4 +4,6 @@ export default class Cpf {
     constructor(num: string) {
         this.num = num
     }
+
+
 }

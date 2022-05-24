@@ -24,13 +24,46 @@ export default class CadastroCliente extends Cadastro {
         console.log(`\nCadastro concluído :)\n`);
     }
     public update(): void {
+        let id = this.entrada.receberTexto(`Digite o id do usuário que você deseja atualizar: `)
+        
+        try {
+            
+            wb.clientes.forEach((element) => {
+                if(element.id == id) {
+                    element.name = this.entrada.receberTexto('Nome: ')
+                    element.gender = this.entrada.receberTexto('Gênero (M/F): ').toUpperCase()
+                    let cpf = this.entrada.receberTexto('CPF: ')
+                    element.cpf = new Cpf (cpf)
+                    element.telefone = this.entrada.receberTexto('Telefone: ')
+                }
+            })
+        } catch (error) {
+            console.log(error);
+            
+        }
         
     }
+    
     public delete(): void {
+        let id = this.entrada.receberTexto(`Digite o id do usuário que você deseja remover: `)
+        try {
+            wb.clientes.forEach((element, index) => {
+                if(element.id ==id) {
+                    wb.clientes.splice(index)
+                }
+            })    
+
+            console.log(`Usuário ID:${id} deletado com sucesso!`);
+        } catch (error) {
+            console.log(error)
+        }       
 
     }
-    public read(): void {
 
+    public read(): void {
+        wb.clientes.forEach(element => {
+            console.log(element)
+        });       
     }
 
 }
