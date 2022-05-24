@@ -35,15 +35,18 @@ export default class CadastroCliente extends Cadastro {
                     let cpf = this.entrada.receberTexto('CPF: ')
                     element.cpf = new Cpf (cpf)
                     element.telefone = this.entrada.receberTexto('Telefone: ')
+                    
                 }
             })
+            console.log(`Usuário ID:${id} removido com sucesso!`);
+            
         } catch (error) {
             console.log(error);
             
         }
         
     }
-    
+
     public delete(): void {
         let id = this.entrada.receberTexto(`Digite o id do usuário que você deseja remover: `)
         try {
@@ -53,7 +56,7 @@ export default class CadastroCliente extends Cadastro {
                 }
             })    
 
-            console.log(`Usuário ID:${id} deletado com sucesso!`);
+            console.log(`Usuário ID:${id} removido com sucesso!`);
         } catch (error) {
             console.log(error)
         }       

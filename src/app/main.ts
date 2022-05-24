@@ -5,6 +5,8 @@ import Servico from '../model/servico'
 import Empresa from '../model/empresa'
 import Entrada from '../io/entrada'
 import CadastroCliente from '../controller/cadastroCliente'
+import CadastroProduto from '../controller/cadastroProduto'
+import CadastroServico from '../controller/cadastroServico'
 import wb from '../db/data'
 
 
@@ -29,7 +31,7 @@ let execucao = true
 while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Gerenciador Cadastro de Cliente`);
-    console.log(`2 - Gerenciador Cadastro de Produto`);
+    console.log(`2 - Gerenciador Cadastro de Produto e Serviços`);
     console.log(`3 - Registrar um Produto`);
     console.log('5 - Estatísticas');
     
@@ -45,6 +47,8 @@ while (execucao) {
     let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
 
     let cadastro = new CadastroCliente()
+    let cadastroProd = new CadastroProduto()
+    let cadastroServ = new CadastroServico()
     switch (opcao) {
         case 1:
             console.log('Opções: ')
@@ -76,7 +80,73 @@ while (execucao) {
             break;
             
         case 2:
-            cadastro.update()
+            console.log('Opções: ')
+            console.log('1 - Produto');
+            console.log('2 - Serviço');
+            
+            
+            let opcao_serv_prod = entrada.receberNumero(`Por favor, escolha uma opção: `)
+            switch (opcao_serv_prod) {
+                
+                case 1:
+                    console.log('Opções: ')
+                    console.log('1 - Cadastrar novo produto');
+                    console.log('2 - Atualizar um produto');
+                    console.log('3 - Remover produto');
+                    console.log('4 - Listar todos os produtos');
+                    console.log('0 - Voltar');
+
+                    let opcao_prod = entrada.receberNumero(`Por favor, escolha uma opção: `)
+                    switch (opcao_prod) {
+
+                        case 1:
+                            cadastroProd.cadastrar()
+                            break
+                        case 2:
+                            cadastroProd.update()
+                            break
+                        case 3:
+                            cadastroProd.remove()
+                            break
+                        case 4:
+                            cadastroProd.read()
+                            break
+                        case 0:
+                            break
+                    }
+
+                break
+
+                case 2:
+                    console.log('Opções: ')
+                    console.log('1 - Cadastrar novo serviço');
+                    console.log('2 - Atualizar um serviço');
+                    console.log('3 - Remover serviço');
+                    console.log('4 - Listar todos os serviços');
+                    console.log('0 - Voltar');
+
+                    let opcao_serv = entrada.receberNumero(`Por favor, escolha uma opção: `)
+                    switch (opcao_serv) {
+
+                        case 1:
+                            cadastroServ.cadastrar()
+                            break
+                        case 2:
+                            cadastroServ.update()
+                            break
+                        case 3:
+                            cadastroServ.remove()
+                            break
+                        case 4:
+                            cadastroServ.read()
+                            break
+                        case 0:
+                            break
+                    }
+
+                break
+            }   
+            
             break;
         case 3:
             cadastro.read()
