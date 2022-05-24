@@ -31,6 +31,7 @@ export default class CadastroProduto extends Cadastro {
                 if(element.id == id) {
                     element.name = this.entrada.receberTexto('Nome: ')
                     element.price = this.entrada.receberNumero('Preço: ')
+                    console.log(element)
                 }
             })
 
@@ -66,6 +67,18 @@ export default class CadastroProduto extends Cadastro {
         wb.produtos.forEach(element => {
             console.log(element)
         });       
+    }
+
+    public add_cart(): void {
+        let id_cliente = this.entrada.receberTexto(`Digite o id do CLIENTE que você deseja adcionar um produto: `)
+        let id_produto = this.entrada.receberTexto(`Digite o id do produto que você deseja remover: `)
+
+
+    }
+
+    public remove_cart(id_cliente: string, id_produto: string): void {
+        
+
     }
 
 }

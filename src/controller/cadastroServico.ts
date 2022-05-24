@@ -30,6 +30,7 @@ export default class CadastroServico extends Cadastro{
                 if(element.id == id) {
                     element.name = this.entrada.receberTexto('Nome: ')
                     element.price = this.entrada.receberNumero('Preço: ')
+                    console.log(element)
                 }
             })
 

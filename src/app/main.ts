@@ -32,7 +32,7 @@ while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Gerenciador Cadastro de Cliente`);
     console.log(`2 - Gerenciador Cadastro de Produto e Serviços`);
-    console.log(`3 - Registrar um Produto`);
+    console.log(`3 - Atribuir um Produto ou Serviço a um Cliente`);
     console.log('5 - Estatísticas');
     
     // console.log(`2 - Remover cliente`);
@@ -149,7 +149,17 @@ while (execucao) {
             
             break;
         case 3:
-            cadastro.read()
+            console.log('Atribuição de Produtos e Serviços');
+            console.log('1- Atribuir Produto');
+            console.log('2- Atribuir Serviço');
+            
+            let opcao_atr = entrada.receberNumero('Por favor escolha uma opção: ')
+            switch(opcao_atr){
+                case 1:
+                    break
+                case 2:
+                    break
+            }
             break
         case 5:
             console.log('1-Listagem dos 10 clientes que mais consumiram produtos ou serviços, em quantidade:')

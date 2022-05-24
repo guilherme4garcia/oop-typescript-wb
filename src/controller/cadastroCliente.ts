@@ -35,6 +35,7 @@ export default class CadastroCliente extends Cadastro {
                     let cpf = this.entrada.receberTexto('CPF: ')
                     element.cpf = new Cpf (cpf)
                     element.telefone = this.entrada.receberTexto('Telefone: ')
+                    console.log(element)
                     
                 }
             })
