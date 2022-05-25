@@ -1,6 +1,7 @@
-import wb from "../db/data";
+import wb from "../data/wb";
 import Entrada from "../io/entrada";
 import Cadastro from "../model/cadastro";
+import Cliente from "../model/cliente";
 import Produto from "../model/produto";
 
 
@@ -17,7 +18,8 @@ export default class CadastroProduto extends Cadastro {
         let id = this.entrada.receberTexto(`Digite o id: `)
         let name = this.entrada.receberTexto(`Nome do produto: `)
         let price = this.entrada.receberNumero('Preço: ')
-        let produto = new Produto(id, name, price)
+        let quantidade = 1
+        let produto = new Produto(id, name, price, quantidade)
         wb.produtos.push(produto)
         console.log(`\nCadastro concluído :)\n`);
     }
@@ -70,8 +72,14 @@ export default class CadastroProduto extends Cadastro {
     }
 
     public add_cart(): void {
+
+        console.log(wb.clientes)
+
         let id_cliente = this.entrada.receberTexto(`Digite o id do CLIENTE que você deseja adcionar um produto: `)
-        let id_produto = this.entrada.receberTexto(`Digite o id do produto que você deseja remover: `)
+
+       
+        console.log(wb.produtos)
+        let id_produto = this.entrada.receberTexto(`Digite o id do PRODUTO que você deseja atribuir: `)
 
 
     }

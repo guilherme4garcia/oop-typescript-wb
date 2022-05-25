@@ -1,4 +1,5 @@
 import Produto from "./produto"
+import Servico from "./servico"
 import Cpf from "./cpf"
 
 export default class Cliente {
@@ -28,16 +29,20 @@ export default class Cliente {
 
   private data_cadastro: string
   private _produtos_consumidos: Array<Produto>
+  private _servicos_consumidos: Array<Servico>
 
   
-  constructor(id: string, name: string, gender: string, cpf: Cpf, telefone: string) {
+  constructor(id: string, name: string, gender: string, cpf: Number, telefone: string) {
+
+    let code = new Cpf (cpf)
     this.id = id
     this._name = name
     this._gender = gender
-    this._cpf = cpf
+    this._cpf = code
     this._telefone = telefone
     this.data_cadastro = new Date().toLocaleDateString('pt-BR')
     this._produtos_consumidos = []
+    this._servicos_consumidos = []
   }
   
   public get name(): string {
@@ -52,6 +57,13 @@ export default class Cliente {
   }
   public set produtos_consumidos(value: Array<Produto>) {
     this._produtos_consumidos = value
+  }
+
+  public get servicos_consumidos(): Array<Servico> {
+    return this._servicos_consumidos
+  }
+  public set servicos_consumidos(value: Array<Servico>) {
+    this._servicos_consumidos = value
   }
   
 }

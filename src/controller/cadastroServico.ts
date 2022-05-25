@@ -1,4 +1,4 @@
-import wb from "../db/data";
+import wb from "../data/wb";
 import Entrada from "../io/entrada";
 import Cadastro from "../model/cadastro";
 import Servico from "../model/servico";
@@ -16,7 +16,8 @@ export default class CadastroServico extends Cadastro{
         let id = this.entrada.receberTexto(`Digite o id: `)
         let name = this.entrada.receberTexto(`Nome do produto: `)
         let price = this.entrada.receberNumero('Preço: ')
-        let servico = new Servico(id, name, price)
+        let quantidade = 1
+        let servico = new Servico(id, name, price, quantidade)
         wb.servicos.push(servico)
         console.log(`\nCadastro concluído :)\n`);
     }

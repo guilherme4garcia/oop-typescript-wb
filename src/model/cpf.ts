@@ -1,7 +1,7 @@
 export default class Cpf {
-    private num: string
+    private num: Number
 
-    constructor(num: string) {
+    constructor(num: Number) {
         this.num = num
     }
 

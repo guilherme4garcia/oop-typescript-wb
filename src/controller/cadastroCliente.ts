@@ -1,4 +1,4 @@
-import wb from "../db/data";
+import wb from "../data/wb";
 import Entrada from "../io/entrada";
 import Cadastro from "../model/cadastro";
 import Cliente from "../model/cliente";
@@ -16,10 +16,9 @@ export default class CadastroCliente extends Cadastro {
         let id = this.entrada.receberTexto(`Digite o id: `)
         let name = this.entrada.receberTexto(`Por favor informe o nome do cliente: `)
         let gender_letter = this.entrada.receberTexto(`Informe o gênero (M/F): `).toUpperCase()
-        let cpf_num = this.entrada.receberTexto(`Por favor informe o número do cpf: `);
-        let CPF = new Cpf (cpf_num)
+        let cpf = this.entrada.receberNumero(`Por favor informe o número do cpf: `);
         let telefone = this.entrada.receberTexto(`Digite o telefone: `)
-        let cliente = new Cliente(id, name, gender_letter, CPF, telefone);
+        let cliente = new Cliente(id, name, gender_letter, cpf, telefone);
         wb.clientes.push(cliente)
         console.log(`\nCadastro concluído :)\n`);
     }
@@ -32,7 +31,7 @@ export default class CadastroCliente extends Cadastro {
                 if(element.id == id) {
                     element.name = this.entrada.receberTexto('Nome: ')
                     element.gender = this.entrada.receberTexto('Gênero (M/F): ').toUpperCase()
-                    let cpf = this.entrada.receberTexto('CPF: ')
+                    let cpf = this.entrada.receberNumero('CPF: ')
                     element.cpf = new Cpf (cpf)
                     element.telefone = this.entrada.receberTexto('Telefone: ')
                     console.log(element)

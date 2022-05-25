@@ -7,23 +7,21 @@ import Entrada from '../io/entrada'
 import CadastroCliente from '../controller/cadastroCliente'
 import CadastroProduto from '../controller/cadastroProduto'
 import CadastroServico from '../controller/cadastroServico'
-import wb from '../db/data'
+import wb from '../data/wb'
+import generate_data from '../data/data'
 
 
-let c1 = new Cliente('1', 'Guilherme', 'M', new Cpf('234'), '31231')
-let p1 = new Produto('1', 'Shampoo', 20)
-let s1 = new Servico('1', 'Barba', 30)
-let p2 = new Produto('2', 'Creme', 40)
+
+/* 
+let c1 = new Cliente('1', 'Guilherme', 'M', 4123, '31231')
+let p1 = new Produto('1', 'Shampoo', 20, 2)
+c1.produtos_consumidos.push(p1) */
 
 
-let e = new Empresa()
-e.clientes.push(c1)
-c1.produtos_consumidos.push(p1)
-
+generate_data()
 
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
-let empresa = new Empresa()
 let execucao = true
 
 
@@ -156,25 +154,17 @@ while (execucao) {
             let opcao_atr = entrada.receberNumero('Por favor escolha uma opção: ')
             switch(opcao_atr){
                 case 1:
+                    cadastroProd.add_cart()
                     break
                 case 2:
                     break
             }
             break
         case 5:
-            console.log('1-Listagem dos 10 clientes que mais consumiram produtos ou serviços, em quantidade:')
-            console.log('2-Listagem de clientes por gênero:')
-
-            let opcao = entrada.receberNumero(`Por favor, escolha uma opção: `)
-            switch (opcao) {
-                
-                case 1:
-                    
-                    break
-                case 2:
-                    
-                    break
-            }   
+          wb.clientes.forEach(element => {
+            console.log(element)
+          });
+           break
         case 0:
             execucao = false
             console.log(`Até mais`)
@@ -198,6 +188,9 @@ while (execucao) {
 6. Listagem dos 5 clientes que mais consumiram em valor, não em quantidade
 
 
-Cadastrar 30 clientes e 20 produtos
+Melhorar console.log na atribuição de Produtos
+Adcionar e Remover do Carrinho! (Prod/Serv)
+Estatísticas
+
 
 */
