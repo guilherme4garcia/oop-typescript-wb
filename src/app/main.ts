@@ -9,7 +9,7 @@ import CadastroProduto from '../controller/cadastroProduto'
 import CadastroServico from '../controller/cadastroServico'
 import wb from '../data/wb'
 import generate_data from '../data/data'
-
+import Stats from '../controller/statistcs'
 
 
 /* 
@@ -30,7 +30,8 @@ while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Gerenciador Cadastro de Cliente`);
     console.log(`2 - Gerenciador Cadastro de Produto e Serviços`);
-    console.log(`3 - Atribuir um Produto ou Serviço a um Cliente`);
+    console.log(`3 - Adcionar ou Remover PRODUTO ao Carrinho do Cliente`);
+    console.log(`4 - Adcionar ou Remover SERVIÇO ao Carrinho do Cliente`);    
     console.log('5 - Estatísticas');
     
     // console.log(`2 - Remover cliente`);
@@ -47,6 +48,7 @@ while (execucao) {
     let cadastro = new CadastroCliente()
     let cadastroProd = new CadastroProduto()
     let cadastroServ = new CadastroServico()
+    let statistcs = new Stats()
     switch (opcao) {
         case 1:
             console.log('Opções: ')
@@ -147,9 +149,9 @@ while (execucao) {
             
             break;
         case 3:
-            console.log('Atribuição de Produtos e Serviços');
-            console.log('1- Atribuir Produto');
-            console.log('2- Atribuir Serviço');
+            console.log('Carrinho do Cliente: ');
+            console.log('1- Adcionar Produto');
+            console.log('2- Remover Produto ');
             
             let opcao_atr = entrada.receberNumero('Por favor escolha uma opção: ')
             switch(opcao_atr){
@@ -157,14 +159,66 @@ while (execucao) {
                     cadastroProd.add_cart()
                     break
                 case 2:
+                    cadastroProd.remove_cart()
                     break
             }
-            break
+        break
+        
+        case 4:
+            console.log('Carrinho do Cliente: ');
+            console.log('1- Adcionar Serviço');
+            console.log('2- Remover Serviço ');
+            
+            let opcao_serv_cart = entrada.receberNumero('Por favor escolha uma opção: ')
+            switch(opcao_serv_cart){
+                case 1:
+                    cadastroServ.add_cart()
+                break
+                case 2:
+                    cadastroServ.remove_cart()
+                break
+            }
+
+        break
+        
         case 5:
-          wb.clientes.forEach(element => {
-            console.log(element)
-          });
-           break
+          console.log('1- Listagem dos 10 clientes que mais consumiram produtos ou serviços, em quantidade, não em valor.')
+          console.log('2- Listagem de todos os clientes do gênero MASCULINO.')
+          console.log('3- Listagem de todos os clientes do gênero FEMININO.');
+          console.log('4- Listagem geral dos serviços ou produtos mais consumidos.');
+          console.log('5- Listagem dos serviços ou produtos mais consumidos por gênero.');
+          console.log('6- Listagem dos 10 clientes que menos consumiram produtos ou serviços.');
+          console.log('7- Listagem dos 5 clientes que mais consumiram em valor, não em quantidade. ');
+
+          let opcao_stats = entrada.receberNumero('Por favor escolha uma opção: ')
+
+          switch(opcao_stats){
+                case 1:
+                    statistcs.more_quantity()
+                break
+
+                case 2:
+                    statistcs.male()
+                break
+                case 3:
+                    statistcs.female()
+                break
+
+                case 4:
+                break
+                
+                case 5:
+                    break
+                case 6:
+                    statistcs.less_consume()
+                    break
+                case 7:
+                    statistcs.more_value()
+                break
+          }
+
+
+        break
         case 0:
             execucao = false
             console.log(`Até mais`)
@@ -180,12 +234,7 @@ while (execucao) {
 1- CRUD cliente
 2- CRUD produto/servico
 
-1. Listagem dos 10 clientes que mais consumiram produtos ou serviços, em quantidade, não em valor. 
-2. Listagem de todos os clientes por gênero. 
-3. Listagem geral dos serviços ou produtos mais consumidos. 
-4. Listagem dos serviços ou produtos mais consumidos por gênero. 
-5. Listagem dos 10 clientes que menos consumiram produtos ou serviços. 
-6. Listagem dos 5 clientes que mais consumiram em valor, não em quantidade
+
 
 
 Melhorar console.log na atribuição de Produtos

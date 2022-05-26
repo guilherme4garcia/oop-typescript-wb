@@ -5,7 +5,7 @@ import Cpf from "./cpf"
 export default class Cliente {
   public id: string
   private _name: string
-  private _gender: string   
+  private _gender: string
   public get gender(): string {
     return this._gender
   }
@@ -34,6 +34,8 @@ export default class Cliente {
   
   constructor(id: string, name: string, gender: string, cpf: Number, telefone: string) {
 
+    
+
     let code = new Cpf (cpf)
     this.id = id
     this._name = name
@@ -43,6 +45,7 @@ export default class Cliente {
     this.data_cadastro = new Date().toLocaleDateString('pt-BR')
     this._produtos_consumidos = []
     this._servicos_consumidos = []
+
   }
   
   public get name(): string {
@@ -64,6 +67,20 @@ export default class Cliente {
   }
   public set servicos_consumidos(value: Array<Servico>) {
     this._servicos_consumidos = value
+  
   }
   
+  public getTotal() {
+    let total_prod = 0
+    this.produtos_consumidos.forEach(prod => {
+      total_prod += prod.price
+    })
+    let total_serv = 0
+    this.servicos_consumidos.forEach(serv => {
+      total_serv += serv.price
+    })
+    let total = total_prod + total_serv
+    return total
+  }
+
 }
