@@ -208,6 +208,7 @@ while (execucao) {
                 break
                 
                 case 5:
+                    statistcs.popular_gender()
                     break
                 case 6:
                     statistcs.less_consume()

@@ -1,6 +1,10 @@
 import wb from "../data/wb";
 import Cliente from "../model/cliente";
+import Produto from "../model/produto";
+import Ranking from "../model/ranking";
  
+
+
 
 export default class Stats {
     public popular_gender() :void {
@@ -11,6 +15,82 @@ export default class Stats {
                 male.push(element)
             }
         });
+
+        let prod: Array<Ranking> = []
+        wb.produtos.forEach(element => {
+            prod.push(new Ranking(element.id, element.name))
+        })
+
+        prod.forEach(produto => {
+            male.forEach(cliente => {
+                cliente.produtos_consumidos.forEach(prod_consumido => {
+                    if(produto.id == prod_consumido.id) {
+                        produto.add()
+                    }
+                })
+            })
+        })
+
+        let result = prod.sort((a,b) => {
+            return b.acumulador - a.acumulador
+        })
+
+        
+        console.log(result)
+        
+
+        //let primeiro
+        //let ultimo
+        //let produto_encontrado: Array<Produto>
+       
+
+        
+
+        /* let ranking = wb.produtos.sort((a,b) => {
+
+
+            male.forEach(person => {
+                let valor = 0
+
+                if(person.produtos_consumidos.includes(a) == true && person.produtos_consumidos.includes(b) == false){
+                    valor = 1
+                }
+                else if(person.produtos_consumidos.includes(b) == true && person.produtos_consumidos.includes(a) == false){
+                    valor = -1
+                }
+                else{
+                    valor = 0
+                }
+                
+                return valor
+            })
+            
+            
+        })
+        
+        let ranking = result.slice(0,10) */
+
+        
+
+        /* 
+
+        wb.produtos.sort((a,b) => {
+            let produtosEncontrados: Array<Produto> = []
+            male.forEach(person => {
+                produtosEncontrados = []
+               person.produtos_consumidos.forEach(produto => {
+                   if(produto.id == a.id)
+                   produtosEncontrados.push(produto)
+               })
+
+               let tamanho = produtosEncontrados.length
+               
+               
+            })
+
+            
+        }) 
+        */
 
         let female: Array<Cliente> = []
         wb.clientes.forEach(element => {
