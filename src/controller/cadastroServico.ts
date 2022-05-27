@@ -2,7 +2,6 @@ import wb from "../data/wb";
 import Entrada from "../io/entrada";
 import Cadastro from "../model/cadastro";
 import Servico from "../model/servico";
-import CadastroProduto from "./cadastroProduto";
 
 export default class CadastroServico extends Cadastro{
     private entrada: Entrada

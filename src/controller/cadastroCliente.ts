@@ -69,4 +69,26 @@ export default class CadastroCliente extends Cadastro {
         });       
     }
 
+
+    public checkout(): void {
+        let id = this.entrada.receberTexto(`Digite o id do CLIENTE para visualizar o checkout : `)
+        try {
+            let total = 0
+            wb.clientes.forEach(element => {
+                if(element.id == id){
+                    total = element.getTotal()
+                    console.log(element)
+                }
+            })
+            
+            console.log('------------------------------------------------------------------')
+            console.log(`GASTO TOTAL: R$ ${total.toFixed(2)}`)
+            console.log('------------------------------------------------------------------')
+
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 }

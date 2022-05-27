@@ -1,8 +1,6 @@
 import wb from "../data/wb";
 import Cliente from "../model/cliente";
-import Produto from "../model/produto";
 import Ranking from "../model/ranking";
- 
 
 
 
@@ -35,68 +33,45 @@ export default class Stats {
             return b.acumulador - a.acumulador
         })
 
-        
-        console.log(result)
-        
-
-        //let primeiro
-        //let ultimo
-        //let produto_encontrado: Array<Produto>
-       
-
+        let ranking_m = result.slice(0,10)
+        console.log('\n----------RANKING MASCULINO PRODUTOS MAIS CONSUMIDOS----------\n');        
+        ranking_m.forEach((element, index) => {
+            console.log(`${index+1}º- ${element.name} - quantidade: ${element.acumulador}`)
+        });
         
 
-        /* let ranking = wb.produtos.sort((a,b) => {
-
-
-            male.forEach(person => {
-                let valor = 0
-
-                if(person.produtos_consumidos.includes(a) == true && person.produtos_consumidos.includes(b) == false){
-                    valor = 1
-                }
-                else if(person.produtos_consumidos.includes(b) == true && person.produtos_consumidos.includes(a) == false){
-                    valor = -1
-                }
-                else{
-                    valor = 0
-                }
-                
-                return valor
-            })
-            
-            
-        })
-        
-        let ranking = result.slice(0,10) */
-
-        
-
-        /* 
-
-        wb.produtos.sort((a,b) => {
-            let produtosEncontrados: Array<Produto> = []
-            male.forEach(person => {
-                produtosEncontrados = []
-               person.produtos_consumidos.forEach(produto => {
-                   if(produto.id == a.id)
-                   produtosEncontrados.push(produto)
-               })
-
-               let tamanho = produtosEncontrados.length
-               
-               
-            })
-
-            
-        }) 
-        */
+    
 
         let female: Array<Cliente> = []
         wb.clientes.forEach(element => {
             if(element.gender == 'F'){
                 female.push(element)
             }
+        });
+
+        let prod_f: Array<Ranking> = []
+        wb.produtos.forEach(element => {
+            prod_f.push(new Ranking(element.id, element.name))
+        })
+
+        prod_f.forEach(produto => {
+            female.forEach(cliente => {
+                cliente.produtos_consumidos.forEach(prod_consumido => {
+                    if(produto.id == prod_consumido.id) {
+                        produto.add()
+                    }
+                })
+            })
+        })
+
+        let resultf = prod_f.sort((a,b) => {
+            return b.acumulador - a.acumulador
+        })
+
+        let ranking_f = resultf.slice(0,10)
+        console.log('\n----------RANKING FEMININO PRODUTOS MAIS CONSUMIDOS----------\n');        
+        ranking_f.forEach((element, index) => {
+            console.log(`${index+1}º- ${element.name} - quantidade: ${element.acumulador}`)
         });
     }
 
@@ -168,19 +143,64 @@ export default class Stats {
 
     public products_consume() :void {
         // 3. Listagem geral produtos mais consumidos.
-        
-        wb.clientes.forEach(cliente => {
+       
 
-            
-            cliente.produtos_consumidos
+        let prod: Array<Ranking> = []
+        wb.produtos.forEach(element => {
+            prod.push(new Ranking(element.id, element.name))
         })
+
+        prod.forEach(produto => {
+            wb.clientes.forEach(cliente => {
+                cliente.produtos_consumidos.forEach(prod_consumido => {
+                    if(produto.id == prod_consumido.id) {
+                        produto.add()
+                    }
+                })
+            })
+        })
+
+        let result = prod.sort((a,b) => {
+            return b.acumulador - a.acumulador
+        })
+
+        let ranking_prod = result.slice(0,10)
+        console.log('\n----------RANKING PRODUTOS MAIS CONSUMIDOS----------\n');        
+        ranking_prod.forEach((element, index) => {
+            console.log(`${index+1}º- ${element.name} - quantidade: ${element.acumulador}`)
+        });
+
+
+        
+        
     }
 
-    public services_consume() :void {
-        // 3. Listagem geral serviços mais consumidos. 
+    public services_consume() : void {
+        let serv: Array<Ranking> = []
+        wb.servicos.forEach(element => {
+            serv.push(new Ranking(element.id, element.name))
+        })
 
+        serv.forEach(servico => {
+            wb.clientes.forEach(cliente => {
+                cliente.servicos_consumidos.forEach(serv_consumido => {
+                    if(servico.id == serv_consumido.id) {
+                        servico.add()
+                    }
+                })
+            })
+        })
 
-        
+        let result = serv.sort((a,b) => {
+            return b.acumulador - a.acumulador
+        })
+
+        let ranking_serv = result.slice(0,10)
+        console.log('\n----------RANKING SERVIÇOS MAIS CONSUMIDOS----------\n');        
+        ranking_serv.forEach((element, index) => {
+            console.log(`${index+1}º- ${element.name} - quantidade: ${element.acumulador}`)
+        });
+
     }
 
     public more_quantity() : void {
@@ -241,5 +261,5 @@ export default class Stats {
         
     }
 
-    
+ 
 }

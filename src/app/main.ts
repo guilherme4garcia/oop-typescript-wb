@@ -1,45 +1,26 @@
-import Cliente from '../model/cliente'
-import Cpf from '../model/cpf'
-import Produto from '../model/produto'
-import Servico from '../model/servico'
-import Empresa from '../model/empresa'
 import Entrada from '../io/entrada'
 import CadastroCliente from '../controller/cadastroCliente'
 import CadastroProduto from '../controller/cadastroProduto'
 import CadastroServico from '../controller/cadastroServico'
-import wb from '../data/wb'
 import generate_data from '../data/data'
 import Stats from '../controller/statistcs'
 
 
-/* 
-let c1 = new Cliente('1', 'Guilherme', 'M', 4123, '31231')
-let p1 = new Produto('1', 'Shampoo', 20, 2)
-c1.produtos_consumidos.push(p1) */
-
-
+// generate users, products and services...
 generate_data()
 
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let execucao = true
 
-
-
 while (execucao) {
-    console.log(`Opções:`);
+    console.log(`\nOpções:`);
     console.log(`1 - Gerenciador Cadastro de Cliente`);
     console.log(`2 - Gerenciador Cadastro de Produto e Serviços`);
     console.log(`3 - Adcionar ou Remover PRODUTO ao Carrinho do Cliente`);
     console.log(`4 - Adcionar ou Remover SERVIÇO ao Carrinho do Cliente`);    
     console.log('5 - Estatísticas');
-    
-    // console.log(`2 - Remover cliente`);
-    // console.log(`3 - Atualizar cliente`);
-    // console.log(`6 - Remover um Produto`);
-    // console.log(`7 - Atualizar um Produto`);
-    // console.log(`8 - Listar todos os Produtos`);
-    // console.log(`9 - Atribuir um produto a um cliente.`);
+    console.log('6 - Checkout Cliente')
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -57,7 +38,6 @@ while (execucao) {
             console.log('3 - Remover usuário');
             console.log('4 - Listar todos os usuários');
             console.log('0 - Voltar');
-            
             
             let opcao_cad = entrada.receberNumero(`Por favor, escolha uma opção: `)
             switch (opcao_cad) {
@@ -77,13 +57,12 @@ while (execucao) {
                     break
             }   
             
-            break;
+        break;
             
         case 2:
             console.log('Opções: ')
             console.log('1 - Produto');
             console.log('2 - Serviço');
-            
             
             let opcao_serv_prod = entrada.receberNumero(`Por favor, escolha uma opção: `)
             switch (opcao_serv_prod) {
@@ -147,7 +126,7 @@ while (execucao) {
                 break
             }   
             
-            break;
+        break;
         case 3:
             console.log('Carrinho do Cliente: ');
             console.log('1- Adcionar Produto');
@@ -205,6 +184,8 @@ while (execucao) {
                 break
 
                 case 4:
+                    statistcs.products_consume()
+                    statistcs.services_consume()
                 break
                 
                 case 5:
@@ -217,8 +198,9 @@ while (execucao) {
                     statistcs.more_value()
                 break
           }
-
-
+        break
+        case 6:
+            cadastro.checkout()
         break
         case 0:
             execucao = false
@@ -228,19 +210,3 @@ while (execucao) {
             console.log(`Operação não entendida :(`)
     }
 }
-
-/* Objetivos:
-
-0- Criar Switch Case
-1- CRUD cliente
-2- CRUD produto/servico
-
-
-
-
-Melhorar console.log na atribuição de Produtos
-Adcionar e Remover do Carrinho! (Prod/Serv)
-Estatísticas
-
-
-*/
