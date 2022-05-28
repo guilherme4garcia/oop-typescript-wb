@@ -1,7 +1,7 @@
 export default class Produto {
     public id: string
     private _name: string
-    public quantidade: Number
+    public quantidade: number
     public get name(): string {
         return this._name
     }
@@ -10,16 +10,16 @@ export default class Produto {
         this._name = value
     }
     
-    private _price: Number
-    public get price(): Number {
+    private _price: number
+    public get price(): number {
         return this._price
     }
-    public set price(value: Number) {
+    public set price(value: number) {
         this._price = value
     }
 
     
-    constructor(id: string, name: string, price: Number, quantidade: Number) {
+    constructor(id: string, name: string, price: number, quantidade: number) {
         this.id = id
         this._name = name
         this._price = price

@@ -1,7 +1,6 @@
 import wb from "../data/wb";
 import Entrada from "../io/entrada";
 import Cadastro from "../model/cadastro";
-import Cliente from "../model/cliente";
 import Produto from "../model/produto";
 
 
@@ -73,19 +72,80 @@ export default class CadastroProduto extends Cadastro {
 
     public add_cart(): void {
 
-        console.log(wb.clientes)
+        wb.clientes.forEach(element => {
+            console.log(`ID:${element.id} - ${element.name}`)
+        });
+        console.log('-----------------------------------------------');
 
-        let id_cliente = this.entrada.receberTexto(`Digite o id do CLIENTE que você deseja adcionar um produto: `)
+        let id_cliente = this.entrada.receberTexto(`Digite o id do CLIENTE que você deseja ADCIONAR um produto: `)
 
-       
-        console.log(wb.produtos)
+        wb.produtos.forEach(element => {
+            console.log(`ID:${element.id} - ${element.name}, R$ ${element.price.toFixed(2)}`)
+        });
+        
+        console.log('-----------------------------------------------');
+
         let id_produto = this.entrada.receberTexto(`Digite o id do PRODUTO que você deseja atribuir: `)
+        
+        
+        wb.produtos.forEach(produto => {
+            if (produto.id == id_produto) {
+                let add = produto
+                wb.clientes.forEach(element => {
+                    if (element.id == id_cliente) {
+                        element.produtos_consumidos.push(add)
+                        console.log('-----------------------------------------------');
+                        console.log(`${add.name} adcionado ao carrinho de ${element.name}`)
+                        console.log('CARRINHO: ');
+                        console.log(element.produtos_consumidos)
+                        console.log('-----------------------------------------------');
 
-
+                    }
+                })  
+            } 
+        })  
     }
 
-    public remove_cart(id_cliente: string, id_produto: string): void {
+    public remove_cart(): void {
+
+        wb.clientes.forEach(element => {
+            console.log(`ID:${element.id} - ${element.name}`)
+        });
+        console.log('-----------------------------------------------');
+
+        let id_cliente = this.entrada.receberTexto(`Digite o id do CLIENTE que você deseja REMOVER um produto: `)
+
+        wb.clientes.forEach(element => {
+            if(element.id == id_cliente) {
+
+                console.log(element.name)
+                console.log(element.produtos_consumidos)
+            }
+        });
         
+        console.log('-----------------------------------------------');
+
+        let id_produto = this.entrada.receberTexto(`Digite o id do PRODUTO que você deseja remover do carrinho: `)
+        
+        
+        wb.produtos.forEach(produto => {
+            if (produto.id == id_produto) {
+                let remove = produto
+                wb.clientes.forEach(element => {
+                    if (element.id == id_cliente) {
+                        
+                        let position = element.produtos_consumidos.indexOf(remove)
+                        element.produtos_consumidos.splice(position,1)
+                        console.log('-----------------------------------------------');
+                        console.log(`${remove.name} removido do carrinho de ${element.name}`)
+                        console.log('CARRINHO: ');
+                        console.log(element.produtos_consumidos)
+                        console.log('-----------------------------------------------');
+
+                    }
+                })  
+            } 
+        }) 
 
     }
 
